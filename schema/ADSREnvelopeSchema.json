@@ -1,0 +1,35 @@
+{
+    "$id": "ADSREnvelope",
+    "type": "object",
+    "properties": {
+        "attack": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "default": 0.1,
+            "minimum": 0.01,
+            "maximum": 1
+        },
+        "decay": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "default": 0.1,
+            "minimum": 0.01,
+            "maximum": 1
+        },
+        "sustain": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "default": 0.1,
+            "minimum": 0.01,
+            "maximum": 1
+        },
+        "release": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "default": 0.1,
+            "minimum": 0.01,
+            "maximum": 2
+        }
+    },
+    "additionalProperties": false
+}

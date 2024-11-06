@@ -1,0 +1,20 @@
+:root {
+    --font-family: 'Helvetica Neue', sans-serif;
+    --primary-background-color: #f5f4f4;
+    --primary-text-color: #667794;
+    --secondary-text-color: #85899a;
+    --primary-background-active-color: #c3cfe4;
+    --primary-background-hover-color: #d7e3f5;
+    --secondary-background-color: #ebebeb;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-background-color: #000000;
+        --primary-text-color: #ddd;
+        --secondary-text-color: #a2a2a2;
+        --primary-background-active-color: #1e283f;
+        --primary-background-hover-color: #27324d;
+        --secondary-background-color: #1e1e1e;
+    }
+}

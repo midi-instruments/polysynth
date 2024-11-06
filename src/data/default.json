@@ -1,0 +1,88 @@
+{
+    "instruments": [
+        {
+            "name": "default-a",
+            "channel": {
+                "volume": -60,
+                "pan": -1,
+                "mute": false,
+                "solo": false
+            },
+            "oscillator": {
+                "type": "sine",
+                "frequency": 440,
+                "phase": 0,
+                "detune": 0
+            },
+            "filters": [
+                {
+                    "type": "lowpass",
+                    "frequency": 20000,
+                    "q": 1
+                }
+            ],
+            "envelope": {
+                "attack": 0.01,
+                "decay": 0.1,
+                "sustain": 0.1,
+                "release": 0.1
+            }
+        },
+        {
+            "name": "default-b",
+            "channel": {
+                "volume": -60,
+                "pan": 0,
+                "mute": false,
+                "solo": false
+            },
+            "oscillator": {
+                "type": "sine",
+                "frequency": 440,
+                "phase": 0,
+                "detune": 0
+            },
+            "filters": [
+                {
+                    "type": "lowpass",
+                    "frequency": 20000,
+                    "q": 1
+                }
+            ],
+            "envelope": {
+                "attack": 0.01,
+                "decay": 0.1,
+                "sustain": 0.1,
+                "release": 0.1
+            }
+        },
+        {
+            "name": "default-c",
+            "channel": {
+                "volume": -60,
+                "pan": 1,
+                "mute": false,
+                "solo": false
+            },
+            "oscillator": {
+                "type": "sine",
+                "frequency": 440,
+                "phase": 0,
+                "detune": 0
+            },
+            "filters": [
+                {
+                    "type": "lowpass",
+                    "frequency": 20000,
+                    "q": 1
+                }
+            ],
+            "envelope": {
+                "attack": 0.01,
+                "decay": 0.1,
+                "sustain": 0.1,
+                "release": 0.1
+            }
+        }
+    ]
+}

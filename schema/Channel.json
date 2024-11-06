@@ -1,0 +1,29 @@
+{
+    "$id": "Channel",
+    "type": "object",
+    "properties": {
+        "volume": {
+            "type": "number",
+            "multipleOf": 1,
+            "default": -60,
+            "minimum": -100,
+            "maximum": 0
+        },
+        "pan": {
+            "type": "number",
+            "multipleOf": 1,
+            "default": 0,
+            "minimum": -1,
+            "maximum": 1
+        },
+        "mute": {
+            "type": "boolean",
+            "default": false
+        },
+        "solo": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "additionalProperties": false
+}

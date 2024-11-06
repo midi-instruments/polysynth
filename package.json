@@ -1,0 +1,118 @@
+{
+    "name": "midi-instruments-polysynth",
+    "version": "1.0.0",
+    "description": "Tone.js Polysynth Instrument",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "webpack --mode production",
+        "start": "webpack serve --mode development --host 0.0.0.0 --port 80",
+        "prettier": "prettier --write '**/*.js' '**/*.json' '**/*.css' '**/*.html'",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.26.0",
+        "@babel/preset-typescript": "^7.26.0",
+        "ajv": "^8.17.1",
+        "babel-loader": "^9.2.1",
+        "copy-webpack-plugin": "^12.0.2",
+        "eslint": "^8.57.1",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin": "^1.0.1",
+        "eslint-plugin-json": "^4.0.1",
+        "eslint-webpack-plugin": "^4.2.0",
+        "html-webpack-plugin": "^5.6.3",
+        "husky": "^9.1.6",
+        "install": "^0.13.0",
+        "lint-staged": "^15.2.10",
+        "npm": "^10.9.0",
+        "prettier": "^3.3.3",
+        "tone": "^15.0.4",
+        "webpack": "^5.96.1",
+        "webpack-bundle-analyzer": "^4.10.2",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.1.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/midi-instruments/polysynth.git"
+    },
+    "keywords": [
+        "tone.js",
+        "polysynth",
+        "midi",
+        "instrument"
+    ],
+    "author": "Rob Higgins <higginsrob@gmail.com>",
+    "bugs": {
+        "url": "https://github.com/midi-instruments/polysynth/issues"
+    },
+    "homepage": "https://github.com/midi-instruments/polysynth#readme",
+    "eslintConfig": {
+        "extends": [
+            "plugin:prettier",
+            "plugin:json/recommended",
+            "standard"
+        ]
+    },
+    "prettier": {
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "htmlWhitespaceSensitivity": "css",
+        "insertPragma": false,
+        "jsxSingleQuote": true,
+        "printWidth": 120,
+        "proseWrap": "always",
+        "quoteProps": "as-needed",
+        "requirePragma": false,
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 4,
+        "trailingComma": "all",
+        "useTabs": false
+    },
+    "tsconfig": {
+        "compilerOptions": {
+            "allowJs": false,
+            "incremental": true,
+            "lib": [
+                "dom",
+                "ES2015",
+                "ES2016",
+                "ES2017",
+                "ES2018",
+                "ES2019",
+                "ES2020",
+                "ES2021",
+                "ES2022",
+                "ES2023"
+            ],
+            "moduleResolution": "node",
+            "declaration": true,
+            "declarationMap": true,
+            "rootDir": "./src",
+            "composite": false,
+            "removeComments": true,
+            "importHelpers": true,
+            "strict": true,
+            "noImplicitAny": true,
+            "noImplicitThis": true,
+            "noUnusedLocals": true,
+            "noUnusedParameters": true,
+            "baseUrl": "./src",
+            "allowSyntheticDefaultImports": true,
+            "preserveSymlinks": true,
+            "typeRoots": [
+                "./node_modules/@types",
+                "./types"
+            ]
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,js,json,mjs,css,md,html}": "npm run pre-commit"
+    }
+}
