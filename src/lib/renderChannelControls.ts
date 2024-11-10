@@ -1,6 +1,9 @@
 import { validateChannelSchema } from './utils.ts';
+import renderMeter from './renderMeter.ts';
+import renderWaveform from './renderWaveform.ts';
 
-export default function renderChannelControls(channel: Channel, synth, ch, container) {
+export default function renderChannelControls(channel: Channel, instrument, ch, container) {
+    const { name } = instrument;
     const controls = document.createElement('div');
     controls.classList.add('channel-controls');
     Object.keys(channel).forEach(key => {
@@ -8,11 +11,10 @@ export default function renderChannelControls(channel: Channel, synth, ch, conta
         if (prop) {
             const isEnum = Array.isArray(prop.enum);
             const control = document.createElement(isEnum ? 'select' : 'input');
-            control.id = `${synth.name}-${key}`;
-            control.name = control.id;
+            control.name = `${name}-${key}`;
             const label = document.createElement('label');
             label.innerText = key.split('-')[1];
-            label.htmlFor = control.id;
+            label.appendChild(control);
             const div = document.createElement('div');
             div.classList.add('control-container');
             if (prop.type === 'number') {
@@ -70,10 +72,11 @@ export default function renderChannelControls(channel: Channel, synth, ch, conta
                 channel[key] = prop.default;
                 ch.set({ channel: {[key.split('-')[1]]: prop.default }});
             });
-            div.appendChild(control);
             div.appendChild(label);
             controls.appendChild(div);
         }
     });
+    renderWaveform(ch, controls);
+    renderMeter(ch, controls);
     container.appendChild(controls);
 }

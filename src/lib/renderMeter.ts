@@ -1,18 +1,20 @@
 import * as Tone from 'tone';
 
+const scale = 3;
+
 function drawMeter(ctx, meterL, meterR) {
     const valueL = (meterL.getValue() * 100);
     const valueR = (meterR.getValue() * 100);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     if (valueL > 0) {
-        ctx.fillStyle = valueL < 90 ? 'green' : valueL < 95 ? 'orange' : 'red';
-        const height = ctx.canvas.height * (valueL / 100);
-        ctx.fillRect(0, ctx.canvas.height - height, (ctx.canvas.width/2) - 0.5, height);
+        ctx.fillStyle = valueL < 12 ? 'green' : valueL < 72 ? 'orange' : 'red';
+        const height = ctx.canvas.height * (valueL / 100) * scale;
+        ctx.fillRect(0, ctx.canvas.height - height, (ctx.canvas.width/2) - 2, height);
     }
     if (valueR > 0) {
-        ctx.fillStyle = valueL < 90 ? 'green' : valueR < 95 ? 'orange' : 'red';
-        const height = ctx.canvas.height * (valueR / 100);
-        ctx.fillRect((ctx.canvas.width/2) + 0.5, ctx.canvas.height - height, (ctx.canvas.width/2) - 0.5, height);
+        ctx.fillStyle = valueR < 20 ? 'green' : valueR < 70 ? 'orange' : 'red';
+        const height = ctx.canvas.height * (valueR / 100) * scale;
+        ctx.fillRect((ctx.canvas.width/2) + 2 , ctx.canvas.height - height, (ctx.canvas.width/2) - 2, height);
     }
 }
 
@@ -21,7 +23,7 @@ export default function renderMeter(channel, container) {
     meterContainer.classList.add('meter-container');
     const meterCanvas = document.createElement('canvas');
     meterCanvas.width = 20;
-    meterCanvas.height = 130;
+    meterCanvas.height = 120;
     meterCanvas.classList.add('meter');
     const ctx = meterCanvas.getContext('2d');
     meterContainer.appendChild(meterCanvas);

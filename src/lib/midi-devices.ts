@@ -1,11 +1,14 @@
 import { Note } from 'tonal';
 import * as Tone from 'tone';
+import ccMap from '../data/cc.map.json';
 
 const pedals = {
     right: false,
     middle: false,
     left: false,
 }
+
+let ccMode;
 
 export default async function initMidiDevices(synths) {
     const access = await navigator.requestMIDIAccess();
@@ -25,7 +28,17 @@ export default async function initMidiDevices(synths) {
                         synth.triggerRelease(midiNote, context.currentTime);
                     });
                 } else if (command === 176 || command === 244) {
-                    processSystemMessage(synths, command, note, midiNote, context, velocity);
+                    if (!isCustomControlChangeMessage(note)) {
+                        if (note === 98) {
+                            ccMode = velocity;
+                        }
+                        if (note === 38) {
+                            console.log({cc: note, value: velocity, mode: ccMode});
+                        } else {
+                            console.log({cc: note, value: velocity});
+                        }
+                        processSystemMessage(synths, command, note, midiNote, context, velocity);
+                    }
                 }
             }
         });
@@ -43,34 +56,34 @@ function isCustomControlChangeMessage(note) {
 }
 
 function processSystemMessage(synths, command, note, midiNote, context, velocity) {
-    if (command === 176 && note === 1) {
-        console.log('control: modulation wheel', velocity);
-    } else if (command === 176 && note === 7) {
-        console.log('control: volume');
-    } else if (command === 176 && note === 38) {
-        console.log('control: rate/time', velocity);
-    } else if (command === 244) {
-        console.log('control: pitch', note);
-    } else if (command === 176 && note === 67) {
-        if (velocity > 63) {
-            pedals.left = true;
-        } else {
-            pedals.left = false;
-        }
-        console.log('control change left pedal', pedals.left);
-    } else if (command === 176 && note === 66) {
-        if (velocity > 63) {
-            pedals.middle = true;
-        } else {
-            pedals.middle = false;
-        }
-        console.log('control change middle pedal', pedals.middle);
-    } else if (command === 176 && note === 64) {
-        if (velocity > 63) {
-            pedals.right = true;
-        } else {
-            pedals.right = false;
-        }
-        console.log('control change right pedal', pedals.right);
-    }
+    // if (command === 176 && note === 1) {
+    //     console.log('control: modulation wheel', velocity);
+    // } else if (command === 176 && note === 7) {
+    //     console.log('control: volume');
+    // } else if (command === 176 && note === 38) {
+    //     console.log('control: value', velocity, midiNote);
+    // } else if (command === 244) {
+    //     console.log('control: pitch', note);
+    // } else if (command === 176 && note === 67) {
+    //     if (velocity > 63) {
+    //         pedals.left = true;
+    //     } else {
+    //         pedals.left = false;
+    //     }
+    //     console.log('control change left pedal', pedals.left);
+    // } else if (command === 176 && note === 66) {
+    //     if (velocity > 63) {
+    //         pedals.middle = true;
+    //     } else {
+    //         pedals.middle = false;
+    //     }
+    //     console.log('control change middle pedal', pedals.middle);
+    // } else if (command === 176 && note === 64) {
+    //     if (velocity > 63) {
+    //         pedals.right = true;
+    //     } else {
+    //         pedals.right = false;
+    //     }
+    //     console.log('control change right pedal', pedals.right);
+    // }
 }

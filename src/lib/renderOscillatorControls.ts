@@ -1,6 +1,7 @@
 import { validateOscillatorSchema } from '../lib/utils.ts';
 
-export default function renderOscillatorControls(oscillator: Oscillator, synth, container){
+export default function renderOscillatorControls(oscillator: Oscillator, instrument, container){
+    const {name, synth } = instrument;
     const controls = document.createElement('div');
     controls.classList.add('oscillator-controls');
     Object.keys(oscillator).forEach((key) => {
@@ -8,11 +9,10 @@ export default function renderOscillatorControls(oscillator: Oscillator, synth, 
         if (prop) {
             const isEnum = Array.isArray(prop.enum);
             const control = document.createElement(isEnum ? 'select' : 'input');
-            control.id = `${synth.name}-${key}`;
-            control.name = control.id;
+            control.name = `${name}-${key}`;
             const label = document.createElement('label');
             label.innerText = key.split('-')[1];
-            label.htmlFor = control.id;
+            label.appendChild(control);
             const div = document.createElement('div');
             div.classList.add('control-container');
             if (prop.type === 'number') {
@@ -51,7 +51,6 @@ export default function renderOscillatorControls(oscillator: Oscillator, synth, 
                 const _key = key.split('-')[1];
                 synth.set({ oscillator: { [_key]: prop.default }});
             });
-            div.appendChild(control);
             div.appendChild(label);
             controls.appendChild(div);
         }

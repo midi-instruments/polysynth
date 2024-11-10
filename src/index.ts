@@ -8,8 +8,11 @@ import renderFiltersControls from './lib/renderFiltersControls.ts';
 import renderEnvelopeControls from './lib/renderEnvelopeControls.ts';
 import renderChannelControls from './lib/renderChannelControls.ts';
 import renderKeyboard from './lib/renderKeyboard.ts';
-import renderMeter from './lib/renderMeter.ts';
 import renderMasterMeter from './lib/renderMasterMeter.ts';
+import {
+    OmniOscillatorSynthOptions,
+    OmniOscillatorType,
+} from 'tone/Tone/source/oscillator/OscillatorInterface.js';
 
 declare global {
     interface Window {
@@ -19,8 +22,6 @@ declare global {
 
 window.instruments = {};
 
-const urlParams = new URLSearchParams(window.location.search);
-
 async function main() {
     const { instruments } = defaultConfig;
     validateInstruments(instruments);
@@ -29,11 +30,10 @@ async function main() {
     renderMasterMeter(masterChannel, document.body);
     instruments.forEach(instrument => {
         const { name, channel, oscillator, envelope, filters } = instrument;
-        const { 'channel-volume': volume, 'channel-pan': pan, 'channel-mute': mute, 'channel-solo': solo } = channel;
+        const { 'channel-volume': volume, 'channel-pan': pan, 'channel-mute': mute } = channel;
         const synth = new Tone.PolySynth(Tone.Synth);
         const {
             'oscillator-type': type,
-            'oscillator-detune': detune,
             'oscillator-phase': phase,
             'oscillator-modulationIndex': modulationIndex,
             'oscillator-harmonicity': harmonicity,
@@ -44,26 +44,25 @@ async function main() {
             'envelope-sustain': sustain,
             'envelope-release': release,
         } = envelope;
+        console.log(type as OmniOscillatorType)
         synth.set({
             oscillator: {
-                type: type || 'sine',
-                detune: detune || 0,
+                type: type as OmniOscillatorType,
                 phase: phase || 0,
                 modulationIndex: modulationIndex || 3,
                 harmonicity: harmonicity || 1,
-            },
+            } as OmniOscillatorSynthOptions,
             envelope: {
                 attack: attack || 0.7,
                 decay: decay || 0.1,
                 sustain: sustain || 0.3,
                 release: release || 1,
-            },
+            } ,
         });
         synths.push(synth);
-        synth.name = name;
         const ch = new Tone.Channel({ channelCount: 2 });
         ch.connect(masterChannel);
-        ch.set({ volume, pan, mute, solo });
+        ch.set({ volume, pan, mute });
         const container = document.createElement('div');
         container.classList.add('instrument');
         const title = document.createElement('h2');
@@ -71,13 +70,12 @@ async function main() {
         const instrumentContainer = document.createElement('div'); 
         instrumentContainer.classList.add('instrument-container');
         instrumentContainer.appendChild(title);
-        renderMeter(ch, instrumentContainer);
-        renderOscillatorControls(oscillator, synth, container);
-        window.instruments[name] = { synth, channel: ch };
-        renderFiltersControls(window.instruments[name], filters, synth, container);
+        window.instruments[name] = { name, synth, channel: ch };
+        renderOscillatorControls(oscillator, window.instruments[name], container);
+        renderFiltersControls(window.instruments[name], filters, container);
         synth.chain(...window.instruments[name].filters, ch);
-        renderEnvelopeControls(envelope, synth, container);
-        renderChannelControls(channel, synth, ch, container);
+        renderEnvelopeControls(envelope, window.instruments[name], container);
+        renderChannelControls(channel, window.instruments[name], ch, container);
         instrumentContainer.appendChild(container);
         document.forms[0].appendChild(instrumentContainer);
 
@@ -91,6 +89,7 @@ async function main() {
     document.forms[0].appendChild(submitButton);
     querystringToForm();
     await initMidiDevices(synths);
+    // Tone.getTransport().start();
 }
 
 window.addEventListener('DOMContentLoaded', main);
