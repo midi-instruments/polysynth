@@ -1,87 +1,256 @@
 {
+    "master": {
+        "master-volume": -6,
+        "master-mute": false,
+        "mono-mode": false,
+        "omni-mode": true,
+        "local": true,
+        "portamento-time": 0,
+        "Portamento-enabled": false
+    },
+    "master-effects": [
+        {
+            "master-fx-type": "stereo-widener",
+            "master-fx-stereo-widener-width": 0
+        },
+        {
+            "master-fx-type": "eq",
+            "master-fx-eq-spectrum-analyzer": true,
+            "master-fx-eq-bands": [
+                {
+                    "master-fx-eq-band-type": "lowshelf",
+                    "master-fx-eq-band-frequency": 32,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 64,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 125,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 250,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 500,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 1000,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 2000,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 4000,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "peaking",
+                    "master-fx-eq-band-frequency": 8000,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                },
+                {
+                    "master-fx-eq-band-type": "highshelf",
+                    "master-fx-eq-band-frequency": 16000,
+                    "master-fx-eq-band-gain": 0,
+                    "master-fx-eq-band-Q": 0.5
+                }
+            ]
+        }
+    ],
+    "fx-sends": [
+        {
+            "fx-sends-enabled": true,
+            "fx-sends-type": "reverb",
+            "fx-sends-reverb-mode": "Freeverb",
+            "fx-sends-reverb-dampening": 0
+        },
+        {
+            "fx-sends-enabled": false,
+            "fx-sends-type": "delay",
+            "fx-sends-delay-mode": "PingPongDelay",
+            "fx-sends-delay-delayTime": 0,
+            "fx-sends-delay-feedback": 0
+        }
+    ],
+    "fx-inserts": [
+        {
+            "fx-insert-type": "tremolo",
+            "fx-insert-tremolo-mode": "vibrato",
+            "fx-insert-tremolo-frequency": 0,
+            "fx-insert-tremolo-depth": 0
+        },
+        {
+            "fx-insert-type": "chorus",
+            "fx-insert-chorus-frequency": 4,
+            "fx-insert-chorus-delayTime": 2.5,
+            "fx-insert-chorus-depth": 0.5
+        },
+        {
+            "fx-insert-type": "phaser",
+            "fx-insert-phaser-frequency": 15,
+            "fx-insert-phaser-octaves": 5,
+            "fx-insert-phaser-bassFrequency": 1000
+        },
+        {
+            "fx-insert-type": "distortion",
+            "fx-insert-distortion-bypass": false,
+            "fx-insert-distortion-amount": false
+        },
+        {
+            "fx-insert-type": "pitch-shift",
+            "fx-insert-pitch": 0
+        },
+        {
+            "fx-insert-type": "auto-panner",
+            "fx-insert-auto-panner-frequency": 0
+        },
+        {
+            "fx-insert-type": "auto-wah",
+            "fx-insert-auto-wah-bassFrequency": 0,
+            "fx-insert-auto-wah-octaves": 0,
+            "fx-insert-auto-wah-sensitivity": 0
+        },
+        {
+            "fx-insert-type": "auto-filter",
+            "fx-insert-auto-filter-frequency": 0,
+            "fx-insert-auto-filter-bassFrequency": 0,
+            "fx-insert-auto-filter-octaves": 0
+        }
+    ],
     "instruments": [
         {
-            "name": "default-a",
+            "name": "instrument-a",
             "channel": {
-                "volume": -60,
-                "pan": -1,
-                "mute": false,
-                "solo": false
+                "channel-volume": -60,
+                "channel-pan": -1,
+                "channel-mute": false
             },
             "oscillator": {
-                "type": "sine",
-                "frequency": 440,
-                "phase": 0,
-                "detune": 0
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 10
             },
             "filters": [
                 {
-                    "type": "lowpass",
-                    "frequency": 20000,
-                    "q": 1
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-Q": 1
                 }
             ],
             "envelope": {
-                "attack": 0.01,
-                "decay": 0.1,
-                "sustain": 0.1,
-                "release": 0.1
+                "envelope-attack": 0.1,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
             }
         },
         {
-            "name": "default-b",
+            "name": "instrument-b",
             "channel": {
-                "volume": -60,
-                "pan": 0,
-                "mute": false,
-                "solo": false
+                "channel-volume": -60,
+                "channel-pan": -0.75,
+                "channel-mute": true
             },
             "oscillator": {
-                "type": "sine",
-                "frequency": 440,
-                "phase": 0,
-                "detune": 0
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 10
             },
             "filters": [
                 {
-                    "type": "lowpass",
-                    "frequency": 20000,
-                    "q": 1
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-Q": 1
                 }
             ],
             "envelope": {
-                "attack": 0.01,
-                "decay": 0.1,
-                "sustain": 0.1,
-                "release": 0.1
+                "envelope-attack": 0.01,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
             }
         },
         {
-            "name": "default-c",
+            "name": "instrument-c",
             "channel": {
-                "volume": -60,
-                "pan": 1,
-                "mute": false,
-                "solo": false
+                "channel-volume": -60,
+                "channel-pan": 0.75,
+                "channel-mute": true
             },
             "oscillator": {
-                "type": "sine",
-                "frequency": 440,
-                "phase": 0,
-                "detune": 0
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 10
             },
             "filters": [
                 {
-                    "type": "lowpass",
-                    "frequency": 20000,
-                    "q": 1
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-Q": 1
                 }
             ],
             "envelope": {
-                "attack": 0.01,
-                "decay": 0.1,
-                "sustain": 0.1,
-                "release": 0.1
+                "envelope-attack": 0.01,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
+            }
+        },
+        {
+            "name": "instrument-d",
+            "channel": {
+                "channel-volume": -60,
+                "channel-pan": 1,
+                "channel-mute": false
+            },
+            "oscillator": {
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 1
+            },
+            "filters": [
+                {
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-Q": 1
+                }
+            ],
+            "envelope": {
+                "envelope-attack": 0.1,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
             }
         }
     ]

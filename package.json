@@ -5,7 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "build": "webpack --mode production",
-        "start": "webpack serve --mode development --host 0.0.0.0 --port 80",
+        "start": "webpack serve --mode development --host 0.0.0.0 --port 443",
         "prettier": "prettier --write '**/*.js' '**/*.json' '**/*.css' '**/*.html'",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -26,6 +26,7 @@
         "lint-staged": "^15.2.10",
         "npm": "^10.9.0",
         "prettier": "^3.3.3",
+        "tonal": "^6.3.0",
         "tone": "^15.0.4",
         "webpack": "^5.96.1",
         "webpack-bundle-analyzer": "^4.10.2",

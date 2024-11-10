@@ -2,28 +2,29 @@
     "$id": "Channel",
     "type": "object",
     "properties": {
-        "volume": {
+        "channel-volume": {
             "type": "number",
-            "multipleOf": 1,
-            "default": -60,
-            "minimum": -100,
+            "multipleOf": 0.01,
+            "default": -20,
+            "minimum": -120,
             "maximum": 0
         },
-        "pan": {
+        "channel-pan": {
             "type": "number",
-            "multipleOf": 1,
+            "multipleOf": 0.001,
             "default": 0,
             "minimum": -1,
             "maximum": 1
         },
-        "mute": {
+        "channel-mute": {
             "type": "boolean",
             "default": false
         },
-        "solo": {
+        "channel-solo": {
             "type": "boolean",
             "default": false
         }
     },
+    "required": ["channel-volume", "channel-pan", "channel-mute"],
     "additionalProperties": false
 }

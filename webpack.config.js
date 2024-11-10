@@ -27,6 +27,8 @@ module.exports = async function (env, props) {
             client: false,
             webSocketServer: false,
             static: build,
+            server: 'https',
+            host: '0.0.0.0',
             compress: false,
             historyApiFallback: { index: '/' },
             headers: {

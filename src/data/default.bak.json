@@ -1,0 +1,120 @@
+{
+    "instruments": [
+        {
+            "name": "instrument-a",
+            "channel": {
+                "channel-volume": -40,
+                "channel-pan": -1,
+                "channel-mute": false,
+                "channel-solo": false
+            },
+            "oscillator": {
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 1
+            },
+            "filters": [
+                {
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-q": 1
+                }
+            ],
+            "envelope": {
+                "envelope-attack": 0.01,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
+            }
+        },
+        {
+            "name": "instrument-b",
+            "channel": {
+                "channel-volume": -40,
+                "channel-pan": -0.5,
+                "channel-mute": false,
+                "channel-solo": false
+            },
+            "oscillator": {
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 1
+            },
+            "filters": [
+                {
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-q": 1
+                }
+            ],
+            "envelope": {
+                "envelope-attack": 0.01,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
+            }
+        },
+        {
+            "name": "instrument-c",
+            "channel": {
+                "channel-volume": -40,
+                "channel-pan": 0.5,
+                "channel-mute": false,
+                "channel-solo": false
+            },
+            "oscillator": {
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 1
+            },
+            "filters": [
+                {
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-q": 1
+                }
+            ],
+            "envelope": {
+                "envelope-attack": 0.01,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
+            }
+        },
+        {
+            "name": "instrument-d",
+            "channel": {
+                "channel-volume": -40,
+                "channel-pan": 1,
+                "channel-mute": false,
+                "channel-solo": false
+            },
+            "oscillator": {
+                "oscillator-type": "sine",
+                "oscillator-phase": 0,
+                "oscillator-detune": 0,
+                "oscillator-modulationIndex": 3,
+                "oscillator-harmonicity": 1
+            },
+            "filters": [
+                {
+                    "filter-type": "lowpass",
+                    "filter-frequency": 20000,
+                    "filter-q": 1
+                }
+            ],
+            "envelope": {
+                "envelope-attack": 0.01,
+                "envelope-decay": 0.1,
+                "envelope-sustain": 0.1,
+                "envelope-release": 0.1
+            }
+        }
+    ]
+}
