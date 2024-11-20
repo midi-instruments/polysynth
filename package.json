@@ -1,6 +1,6 @@
 {
     "name": "midi-instruments-polysynth",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "Tone.js Polysynth Instrument",
     "main": "dist/index.js",
     "scripts": {

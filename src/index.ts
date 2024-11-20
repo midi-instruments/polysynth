@@ -8,7 +8,7 @@ import renderFiltersControls from './lib/renderFiltersControls.ts';
 import renderEnvelopeControls from './lib/renderEnvelopeControls.ts';
 import renderChannelControls from './lib/renderChannelControls.ts';
 import renderKeyboard from './lib/renderKeyboard.ts';
-import renderMasterMeter from './lib/renderMasterMeter.ts';
+import renderMasterChannel from './lib/renderMasterChannel.ts';
 import {
     OmniOscillatorSynthOptions,
     OmniOscillatorType,
@@ -27,7 +27,7 @@ async function main() {
     validateInstruments(instruments);
     const synths: any[] = [];
     const masterChannel = new Tone.Channel({ channelCount: 2 }).toDestination();
-    renderMasterMeter(masterChannel, document.body);
+    renderMasterChannel(masterChannel, document.getElementById('app'));
     instruments.forEach(instrument => {
         const { name, channel, oscillator, envelope, filters } = instrument;
         const { 'channel-volume': volume, 'channel-pan': pan, 'channel-mute': mute } = channel;

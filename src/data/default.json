@@ -4,6 +4,7 @@
         "master-mute": false,
         "mono-mode": false,
         "omni-mode": true,
+        "mod-wheel": 0,
         "local": true,
         "portamento-time": 0,
         "Portamento-enabled": false

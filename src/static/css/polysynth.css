@@ -78,7 +78,8 @@ body {
 .channel-controls,
 .envelope-controls,
 .filter-controls,
-.oscillator-controls {
+.oscillator-controls,
+.master-meter-container {
     flex: 1;
     display: flex;
     justify-content: space-around;
@@ -101,6 +102,10 @@ body {
 }
 .filter-controls {
     background-color: #224;
+}
+.master-meter-container {
+    background-color: rgb(34, 48, 68);
+    justify-content: center;
 }
 #keyboard-container {
     position: fixed;
@@ -152,16 +157,13 @@ body {
 .pad-key-left {
     border-left: solid 8px black;
 }
-.waveform-container {
-    margin-left: 16px;
-    margin-bottom: 8px;
-    overflow:hidden;
-}
-
 .waveform-container canvas {
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.35);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+.fft-container canvas {
+    background: rgba(0, 0, 0, 0.25);
 }
 .meter {
     background: rgba(0, 0, 0, 0.5);
@@ -169,4 +171,7 @@ body {
     border-bottom-right-radius: 10px;
     margin-right: 8px;
     margin-bottom: 8px;
+}
+.master-meter-container {
+
 }
